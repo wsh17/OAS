@@ -1,0 +1,906 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Products controller - gigagantic-server",
+    "description": "Controller for user and products",
+    "contact": {
+      "name": "Fred",
+      "url": "http://gigantic-server.com",
+      "email": "Fred@gigagantic-server.com"
+    },
+    "license": { "name": "Apache 2.0", "url": "http://foo.bar" },
+    "version": "1.0.0"
+  },
+  "servers": [
+    { "url": "https://localhost:8090/poc/v1/", "description": "Server url" }
+  ],
+  "tags": [{ "name": "User", "description": "Business User Services" }],
+  "paths": {
+    "/users": {
+      "post": {
+        "tags": ["sample-controller"],
+        "summary": "Save user information",
+        "description": "API used for saving the users",
+        "operationId": "createUser",
+        "requestBody": {
+          "description": "Created user object",
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/User" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Cache-Control": {
+                "description": "Cache-Control",
+                "style": "simple",
+                "schema": {
+                  "example": "no-cache, no-store, must-revalidate",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "TrackingId": {
+                "description": "tracking",
+                "style": "simple",
+                "schema": {
+                  "example": "Tracking_12312",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "Date": {
+                "description": "date",
+                "style": "simple",
+                "schema": {
+                  "pattern": "(((Mon|Tue|Wed|Thu|Fri|Sat|Sun))[,]\\s[0-9]{1,2})\\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s([0-9]{4})\\s([0-9]{2}):([0-9]{2})(:([0-9]{2}))?\\sGMT\\s?",
+                  "example": "Tue, 31 Jan 2023 21:15:56 GMT",
+                  "allOf": [{ "type": "string" }]
+                }
+              }
+            },
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/GenericMessage" }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "Cache-Control": {
+                "description": "Cache-Control",
+                "style": "simple",
+                "schema": {
+                  "example": "no-cache, no-store, must-revalidate",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "TrackingId": {
+                "description": "tracking",
+                "style": "simple",
+                "schema": {
+                  "example": "Tracking_123",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "Date": {
+                "description": "date",
+                "style": "simple",
+                "schema": {
+                  "pattern": "(((Mon|Tue|Wed|Thu|Fri|Sat|Sun))[,]\\s[0-9]{1,2})\\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s([0-9]{4})\\s([0-9]{2}):([0-9]{2})(:([0-9]{2}))?\\sGMT\\s?",
+                  "example": "Tue, 31 Jan 2023 21:15:56 GMT",
+                  "allOf": [{ "type": "string" }]
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/GenericMessage" }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "headers": {
+              "Cache-Control": {
+                "description": "Cache-Control",
+                "style": "simple",
+                "schema": {
+                  "example": "no-cache, no-store, must-revalidate",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "TrackingId": {
+                "description": "tracking",
+                "style": "simple",
+                "schema": {
+                  "example": "Tracking_123",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "Date": {
+                "description": "date",
+                "style": "simple",
+                "schema": {
+                  "pattern": "(((Mon|Tue|Wed|Thu|Fri|Sat|Sun))[,]\\s[0-9]{1,2})\\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s([0-9]{4})\\s([0-9]{2}):([0-9]{2})(:([0-9]{2}))?\\sGMT\\s?",
+                  "example": "Tue, 31 Jan 2023 21:15:56 GMT",
+                  "allOf": [{ "type": "string" }]
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/GenericMessage" }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "Cache-Control": {
+                "description": "Cache-Control",
+                "style": "simple",
+                "schema": {
+                  "example": "no-cache, no-store, must-revalidate",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "TrackingId": {
+                "description": "tracking",
+                "style": "simple",
+                "schema": {
+                  "example": "Tracking_123",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "Date": {
+                "description": "date",
+                "style": "simple",
+                "schema": {
+                  "pattern": "(((Mon|Tue|Wed|Thu|Fri|Sat|Sun))[,]\\s[0-9]{1,2})\\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s([0-9]{4})\\s([0-9]{2}):([0-9]{2})(:([0-9]{2}))?\\sGMT\\s?",
+                  "example": "Tue, 31 Jan 2023 21:15:56 GMT",
+                  "allOf": [{ "type": "string" }]
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/GenericMessage" }
+              }
+            }
+          }
+        },
+        "security": [{ "req-1": ["a", "b"] }, { "req-2": ["b", "c"] }]
+      },
+      "delete": {
+        "tags": ["sample-controller"],
+        "summary": "Save user information",
+        "description": "API used for saving the users",
+        "operationId": "createUser",
+        "requestBody": {
+          "description": "Created user object",
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/User" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "headers": {
+              "Cache-Control": {
+                "description": "Cache-Control",
+                "style": "simple",
+                "schema": {
+                  "example": "no-cache, no-store, must-revalidate",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "TrackingId": {
+                "description": "tracking",
+                "style": "simple",
+                "schema": {
+                  "example": "Tracking_123",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "Date": {
+                "description": "date",
+                "style": "simple",
+                "schema": {
+                  "pattern": "(((Mon|Tue|Wed|Thu|Fri|Sat|Sun))[,]\\s[0-9]{1,2})\\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s([0-9]{4})\\s([0-9]{2}):([0-9]{2})(:([0-9]{2}))?\\sGMT\\s?",
+                  "example": "Tue, 31 Jan 2023 21:15:56 GMT",
+                  "allOf": [{ "type": "string" }]
+                }
+              }
+            },
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/GenericMessage" }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "Cache-Control": {
+                "description": "Cache-Control",
+                "style": "simple",
+                "schema": {
+                  "example": "no-cache, no-store, must-revalidate",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "TrackingId": {
+                "description": "tracking",
+                "style": "simple",
+                "schema": {
+                  "example": "Tracking_123",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "Date": {
+                "description": "date",
+                "style": "simple",
+                "schema": {
+                  "pattern": "(((Mon|Tue|Wed|Thu|Fri|Sat|Sun))[,]\\s[0-9]{1,2})\\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s([0-9]{4})\\s([0-9]{2}):([0-9]{2})(:([0-9]{2}))?\\sGMT\\s?",
+                  "example": "Tue, 31 Jan 2023 21:15:56 GMT",
+                  "allOf": [{ "type": "string" }]
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/GenericMessage" }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "headers": {
+              "Cache-Control": {
+                "description": "Cache-Control",
+                "style": "simple",
+                "schema": {
+                  "example": "no-cache, no-store, must-revalidate",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "TrackingId": {
+                "description": "tracking",
+                "style": "simple",
+                "schema": {
+                  "example": "Tracking_123",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "Date": {
+                "description": "date",
+                "style": "simple",
+                "schema": {
+                  "pattern": "(((Mon|Tue|Wed|Thu|Fri|Sat|Sun))[,]\\s[0-9]{1,2})\\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s([0-9]{4})\\s([0-9]{2}):([0-9]{2})(:([0-9]{2}))?\\sGMT\\s?",
+                  "example": "Tue, 31 Jan 2023 21:15:56 GMT",
+                  "allOf": [{ "type": "string" }]
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/GenericMessage" }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "Cache-Control": {
+                "description": "Cache-Control",
+                "style": "simple",
+                "schema": {
+                  "example": "no-cache, no-store, must-revalidate",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "TrackingId": {
+                "description": "tracking",
+                "style": "simple",
+                "schema": {
+                  "example": "Tracking_123",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "Date": {
+                "description": "date",
+                "style": "simple",
+                "schema": {
+                  "pattern": "(((Mon|Tue|Wed|Thu|Fri|Sat|Sun))[,]\\s[0-9]{1,2})\\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s([0-9]{4})\\s([0-9]{2}):([0-9]{2})(:([0-9]{2}))?\\sGMT\\s?",
+                  "example": "Tue, 31 Jan 2023 21:15:56 GMT",
+                  "allOf": [{ "type": "string" }]
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/GenericMessage" }
+              }
+            }
+          }
+        },
+        "security": [{ "req-1": ["a", "b"] }, { "req-2": ["b", "c"] }]
+      },
+      "get": {
+        "tags": ["sample-controller"],
+        "summary": "Save user information",
+        "description": "API used for saving the users",
+        "operationId": "createUser",
+        "requestBody": {
+          "description": "Created user object",
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/User" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Cache-Control": {
+                "description": "Cache-Control",
+                "style": "simple",
+                "schema": {
+                  "example": "no-cache, no-store, must-revalidate",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "TrackingId": {
+                "description": "tracking",
+                "style": "simple",
+                "schema": {
+                  "example": "Tracking_123",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "Date": {
+                "description": "date",
+                "style": "simple",
+                "schema": {
+                  "pattern": "(((Mon|Tue|Wed|Thu|Fri|Sat|Sun))[,]\\s[0-9]{1,2})\\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s([0-9]{4})\\s([0-9]{2}):([0-9]{2})(:([0-9]{2}))?\\sGMT\\s?",
+                  "example": "Tue, 31 Jan 2023 21:15:56 GMT",
+                  "allOf": [{ "type": "string" }]
+                }
+              }
+            },
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/GenericMessage" }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "Cache-Control": {
+                "description": "Cache-Control",
+                "style": "simple",
+                "schema": {
+                  "example": "no-cache, no-store, must-revalidate",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "TrackingId": {
+                "description": "tracking",
+                "style": "simple",
+                "schema": {
+                  "example": "Tracking_123",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "Date": {
+                "description": "date",
+                "style": "simple",
+                "schema": {
+                  "pattern": "(((Mon|Tue|Wed|Thu|Fri|Sat|Sun))[,]\\s[0-9]{1,2})\\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s([0-9]{4})\\s([0-9]{2}):([0-9]{2})(:([0-9]{2}))?\\sGMT\\s?",
+                  "example": "Tue, 31 Jan 2023 21:15:56 GMT",
+                  "allOf": [{ "type": "string" }]
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/GenericMessage" }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "headers": {
+              "Cache-Control": {
+                "description": "Cache-Control",
+                "style": "simple",
+                "schema": {
+                  "example": "no-cache, no-store, must-revalidate",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "TrackingId": {
+                "description": "tracking",
+                "style": "simple",
+                "schema": {
+                  "example": "Tracking_123",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "Date": {
+                "description": "date",
+                "style": "simple",
+                "schema": {
+                  "pattern": "(((Mon|Tue|Wed|Thu|Fri|Sat|Sun))[,]\\s[0-9]{1,2})\\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s([0-9]{4})\\s([0-9]{2}):([0-9]{2})(:([0-9]{2}))?\\sGMT\\s?",
+                  "example": "Tue, 31 Jan 2023 21:15:56 GMT",
+                  "allOf": [{ "type": "string" }]
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/GenericMessage" }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "Cache-Control": {
+                "description": "Cache-Control",
+                "style": "simple",
+                "schema": {
+                  "example": "no-cache, no-store, must-revalidate",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "TrackingId": {
+                "description": "tracking",
+                "style": "simple",
+                "schema": {
+                  "example": "Tracking_123",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "Date": {
+                "description": "date",
+                "style": "simple",
+                "schema": {
+                  "pattern": "(((Mon|Tue|Wed|Thu|Fri|Sat|Sun))[,]\\s[0-9]{1,2})\\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s([0-9]{4})\\s([0-9]{2}):([0-9]{2})(:([0-9]{2}))?\\sGMT\\s?",
+                  "example": "Tue, 31 Jan 2023 21:15:56 GMT",
+                  "allOf": [{ "type": "string" }]
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/GenericMessage" }
+              }
+            }
+          }
+        },
+        "security": [{ "req-1": ["a", "b"] }, { "req-2": ["b", "c"] }]
+      }
+    },
+    "/products": {
+      "get": {
+        "tags": ["sample-controller"],
+        "summary": "Get products information",
+        "description": "Get information on product offerings",
+        "operationId": "getSecureProducts",
+        "parameters": [
+          {
+            "name": "max",
+            "in": "query",
+            "description": "max param",
+            "required": true,
+            "schema": {
+              "example": 10,
+              "allOf": [{ "type": "integer", "format": "int32" }]
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "offset param",
+            "required": true,
+            "schema": {
+              "example": 10,
+              "allOf": [{ "type": "integer", "format": "int32" }]
+            },
+            "example": 10
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "sort param",
+            "required": true,
+            "schema": { "example": "asc", "allOf": [{ "type": "string" }] },
+            "example": "asc"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "description": "order param",
+            "required": true,
+            "schema": { "example": "asc", "allOf": [{ "type": "string" }] },
+            "example": "asc"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Cache-Control": {
+                "description": "Cache-Control",
+                "style": "simple",
+                "schema": {
+                  "example": "no-cache, no-store, must-revalidate",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "TrackingId": {
+                "description": "tracking",
+                "style": "simple",
+                "schema": {
+                  "example": "Tracking_123",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "Date": {
+                "description": "date",
+                "style": "simple",
+                "schema": {
+                  "pattern": "(((Mon|Tue|Wed|Thu|Fri|Sat|Sun))[,]\\s[0-9]{1,2})\\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s([0-9]{4})\\s([0-9]{2}):([0-9]{2})(:([0-9]{2}))?\\sGMT\\s?",
+                  "example": "Tue, 31 Jan 2023 21:15:56 GMT",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "Link": {
+                "description": "Link",
+                "style": "simple",
+                "schema": {
+                  "example": "http://component",
+                  "allOf": [{ "type": "string" }]
+                }
+              }
+            },
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/SecureProduct" }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "headers": {
+              "Cache-Control": {
+                "description": "Cache-Control",
+                "style": "simple",
+                "schema": {
+                  "example": "no-cache, no-store, must-revalidate",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "TrackingId": {
+                "description": "tracking",
+                "style": "simple",
+                "schema": {
+                  "example": "Tracking_123",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "Date": {
+                "description": "date",
+                "style": "simple",
+                "schema": {
+                  "pattern": "(((Mon|Tue|Wed|Thu|Fri|Sat|Sun))[,]\\s[0-9]{1,2})\\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s([0-9]{4})\\s([0-9]{2}):([0-9]{2})(:([0-9]{2}))?\\sGMT\\s?",
+                  "example": "Tue, 31 Jan 2023 21:15:56 GMT",
+                  "allOf": [{ "type": "string" }]
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/GenericMessage" }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "Cache-Control": {
+                "description": "Cache-Control",
+                "style": "simple",
+                "schema": {
+                  "example": "no-cache, no-store, must-revalidate",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "TrackingId": {
+                "description": "tracking",
+                "style": "simple",
+                "schema": {
+                  "example": "Tracking_123",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "Date": {
+                "description": "date",
+                "style": "simple",
+                "schema": {
+                  "pattern": "(((Mon|Tue|Wed|Thu|Fri|Sat|Sun))[,]\\s[0-9]{1,2})\\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s([0-9]{4})\\s([0-9]{2}):([0-9]{2})(:([0-9]{2}))?\\sGMT\\s?",
+                  "example": "Tue, 31 Jan 2023 21:15:56 GMT",
+                  "allOf": [{ "type": "string" }]
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/GenericMessage" }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "Cache-Control": {
+                "description": "Cache-Control",
+                "style": "simple",
+                "schema": {
+                  "example": "no-cache, no-store, must-revalidate",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "TrackingId": {
+                "description": "tracking",
+                "style": "simple",
+                "schema": {
+                  "example": "Tracking_123",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "Date": {
+                "description": "date",
+                "style": "simple",
+                "schema": {
+                  "pattern": "(((Mon|Tue|Wed|Thu|Fri|Sat|Sun))[,]\\s[0-9]{1,2})\\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s([0-9]{4})\\s([0-9]{2}):([0-9]{2})(:([0-9]{2}))?\\sGMT\\s?",
+                  "example": "Tue, 31 Jan 2023 21:15:56 GMT",
+                  "allOf": [{ "type": "string" }]
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/GenericMessage" }
+              }
+            }
+          }
+        },
+        "security": [{ "req-1": ["a", "b"] }, { "req-2": ["b", "c"] }]
+      }
+    },
+    "/ping": {
+      "get": {
+        "tags": ["sample-controller"],
+        "summary": "Service health check",
+        "description": "Service health check endpoint",
+        "operationId": "ping",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Cache-Control": {
+                "description": "Cache-Control",
+                "style": "simple",
+                "schema": {
+                  "example": "no-cache, no-store, must-revalidate",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "TrackingId": {
+                "description": "tracking",
+                "style": "simple",
+                "schema": {
+                  "example": "Tracking_123",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "Date": {
+                "description": "date",
+                "style": "simple",
+                "schema": {
+                  "pattern": "(((Mon|Tue|Wed|Thu|Fri|Sat|Sun))[,]\\s[0-9]{1,2})\\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s([0-9]{4})\\s([0-9]{2}):([0-9]{2})(:([0-9]{2}))?\\sGMT\\s?",
+                  "example": "Tue, 31 Jan 2023 21:15:56 GMT",
+                  "allOf": [{ "type": "string" }]
+                }
+              }
+            },
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/GenericMessage" }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "headers": {
+              "Cache-Control": {
+                "description": "Cache-Control",
+                "style": "simple",
+                "schema": {
+                  "example": "no-cache, no-store, must-revalidate",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "TrackingId": {
+                "description": "tracking",
+                "style": "simple",
+                "schema": {
+                  "example": "Tracking_123",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "Date": {
+                "description": "date",
+                "style": "simple",
+                "schema": {
+                  "pattern": "(((Mon|Tue|Wed|Thu|Fri|Sat|Sun))[,]\\s[0-9]{1,2})\\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s([0-9]{4})\\s([0-9]{2}):([0-9]{2})(:([0-9]{2}))?\\sGMT\\s?",
+                  "example": "Tue, 31 Jan 2023 21:15:56 GMT",
+                  "allOf": [{ "type": "string" }]
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/GenericMessage" }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "Cache-Control": {
+                "description": "Cache-Control",
+                "style": "simple",
+                "schema": {
+                  "example": "no-cache, no-store, must-revalidate",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "TrackingId": {
+                "description": "tracking",
+                "style": "simple",
+                "schema": {
+                  "example": "Tracking_123",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "Date": {
+                "description": "date",
+                "style": "simple",
+                "schema": {
+                  "pattern": "(((Mon|Tue|Wed|Thu|Fri|Sat|Sun))[,]\\s[0-9]{1,2})\\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s([0-9]{4})\\s([0-9]{2}):([0-9]{2})(:([0-9]{2}))?\\sGMT\\s?",
+                  "example": "Tue, 31 Jan 2023 21:15:56 GMT",
+                  "allOf": [{ "type": "string" }]
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/GenericMessage" }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "Cache-Control": {
+                "description": "Cache-Control",
+                "style": "simple",
+                "schema": {
+                  "example": "no-cache, no-store, must-revalidate",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "TrackingId": {
+                "description": "tracking",
+                "style": "simple",
+                "schema": {
+                  "example": "Tracking_123",
+                  "allOf": [{ "type": "string" }]
+                }
+              },
+              "Date": {
+                "description": "date",
+                "style": "simple",
+                "schema": {
+                  "pattern": "(((Mon|Tue|Wed|Thu|Fri|Sat|Sun))[,]\\s[0-9]{1,2})\\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s([0-9]{4})\\s([0-9]{2}):([0-9]{2})(:([0-9]{2}))?\\sGMT\\s?",
+                  "example": "Tue, 31 Jan 2023 21:15:56 GMT",
+                  "allOf": [{ "type": "string" }]
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/GenericMessage" }
+              }
+            }
+          }
+        },
+        "security": [{ "req-1": [] }]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "firstName": { "type": "string" },
+          "lastName": { "type": "string" },
+          "email": { "type": "string" }
+        },
+        "description": "user object",
+        "example": "{ firstName: abc, lastName: def, email: abc.com}"
+      },
+      "GenericMessage": {
+        "type": "object",
+        "properties": {
+          "code": { "type": "integer", "format": "int32" },
+          "message": { "type": "string" }
+        },
+        "description": "generic message",
+        "example": "{GenericMessage: {code: 200, message: success}}"
+      },
+      "SecureProduct": {
+        "type": "object",
+        "properties": {
+          "products": { "type": "array", "items": { "type": "string" } }
+        },
+        "description": "products",
+        "example": {
+          "products": [
+            "CiscoCloudlock",
+            "CiscoMeraki",
+            "CiscoUmbrella",
+            "SecureCloudAnalytics",
+            "SecureX"
+          ]
+        }
+      }
+    },
+    "securitySchemes": {
+      "req-1": {
+        "type": "oauth2",
+        "description": "requirement1",
+        "flows": {
+          "implicit": {
+            "authorizationUrl": "http://url.com/auth",
+            "scopes": { "a": "requirement" }
+          }
+        }
+      },
+      "req-2": {
+        "type": "oauth2",
+        "description": "requirement",
+        "flows": {
+          "implicit": {
+            "authorizationUrl": "http://url.com/auth",
+            "scopes": { "b": "requirement" }
+          }
+        }
+      }
+    }
+  }
+}
