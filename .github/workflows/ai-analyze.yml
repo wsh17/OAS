@@ -1,0 +1,46 @@
+# This is a sample workflow to help working with API specs based on API Insights, main steps:
+# 1. add secrets for your github actions, e.g. API_INSIGHTS_OAUTH2_CLIENT_SECRET in {your_github_repo}/settings/secrets/actions
+# 2. add below workflow in your github repo.
+
+name: API Insights Analyze Spec
+
+on:
+  push:
+    branches:
+      - "*"
+    tags: [v*.*-*]
+
+env:
+  API_SPEC: https://raw.githubusercontent.com/wsh17/OAS/main/petstore/petstore_simple-1.22.0-Beta.0.yaml
+  API_INSIGHTS_SERVICE: playground--pipeline
+  API_INSIGHTS_CLI_NAME: api-insights-cli
+  API_INSIGHTS_CLI_DOWNLOAD_URL: https://static.production.devnetcloud.com/libs/api-insights-cli/latest/linux/amd64/api-insights-cli
+  API_INSIGHTS_CLI_VERSION: latest
+  API_INSIGHTS_HOST: https://devnet.cisco.com
+  API_INSIGHTS_BASE_PATH: /v1/apiregistry-cisco
+  API_INSIGHTS_AUTH_TYPE: oauth2
+  API_INSIGHTS_OAUTH2_GRANT_TYPE: client_credentials
+  API_INSIGHTS_OAUTH2_TOKEN_URL: https://auth-devnet.cisco.com/v1/auth/oauth/token
+  API_INSIGHTS_OAUTH2_CLIENT_ID: api-insights-playground-admin-service
+  API_INSIGHTS_OAUTH2_CLIENT_SECRET: ${{ secrets.API_INSIGHTS_OAUTH2_CLIENT_SECRET }} # Get client secret from API Insights support
+  RELEASE_REVISON: 10
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # analyze API specs
+  # by default, it fails if there is any findings in error severity.
+  # additionally, `--fail-below-score int` could be used to fail this step with specified minimal target score.
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: API Insights - Install CLI
+        uses: supplypike/setup-bin@v1
+        with:
+          uri: ${{ env.API_INSIGHTS_CLI_DOWNLOAD_URL }}
+          name: ${{ env.API_INSIGHTS_CLI_NAME }}
+          version: ${{ env.API_INSIGHTS_CLI_VERSION }}
+      - name: API Insights - Analyze API Spec
+        run: |
+          api-insights-cli analyze ${{ env.API_SPEC }} --analyzer contract --fail-below-score 80
+          api-insights-cli analyze ${{ env.API_SPEC }} --analyzer documentation --fail-below-score 80
