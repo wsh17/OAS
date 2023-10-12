@@ -11,7 +11,7 @@ on:
     tags: [v*.*-*]
 
 env:
-  API_SPEC: https://raw.githubusercontent.com/wsh17/OAS/gigantic/api_test.json
+  API_SPEC: https://raw.githubusercontent.com/wsh17/OAS/main/gigantic/api_test.json
   API_INSIGHTS_SERVICE: playground--pipeline
   API_INSIGHTS_CLI_NAME: api-insights-cli
   API_INSIGHTS_CLI_DOWNLOAD_URL: https://static.production.devnetcloud.com/libs/api-insights-cli/latest/linux/amd64/api-insights-cli
