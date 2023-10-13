@@ -9,7 +9,7 @@
       "email": "Fred@gigagantic-server.com"
     },
     "license": { "name": "Apache 2.0", "url": "http://foo.bar" },
-    "version": "1.0.0"
+    "version": "1.0.0-test"
   },
   "servers": [
     { "url": "https://localhost:8090/poc/v1/", "description": "Server url" }
