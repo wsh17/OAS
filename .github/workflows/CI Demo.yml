@@ -13,6 +13,21 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+env:
+  API_SPEC: https://raw.githubusercontent.com/wsh17/OAS/main/gigantic/api_test.json
+  API_INSIGHTS_SERVICE: playground--pipeline
+  API_INSIGHTS_CLI_NAME: api-insights-cli
+  API_INSIGHTS_CLI_DOWNLOAD_URL: https://static.production.devnetcloud.com/libs/api-insights-cli/latest/linux/amd64/api-insights-cli
+  API_INSIGHTS_CLI_VERSION: latest
+  API_INSIGHTS_HOST: https://devnet.cisco.com
+  API_INSIGHTS_BASE_PATH: /v1/apiregistry-cisco
+  API_INSIGHTS_AUTH_TYPE: oauth2
+  API_INSIGHTS_OAUTH2_GRANT_TYPE: client_credentials
+  API_INSIGHTS_OAUTH2_TOKEN_URL: https://auth-devnet.cisco.com/v1/auth/oauth/token
+  API_INSIGHTS_OAUTH2_CLIENT_ID: api-insights-playground-admin-service
+  API_INSIGHTS_OAUTH2_CLIENT_SECRET: ${{ secrets.API_INSIGHTS_OAUTH2_CLIENT_SECRET }} # Get client secret from API Insights support
+  RELEASE_REVISON: 10
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
