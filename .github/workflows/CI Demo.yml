@@ -39,6 +39,12 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
+      - name: API Insights - Install CLI
+        uses: supplypike/setup-bin@v1
+        with:
+          uri: ${{ env.API_INSIGHTS_CLI_DOWNLOAD_URL }}
+          name: ${{ env.API_INSIGHTS_CLI_NAME }}
+          version: ${{ env.API_INSIGHTS_CLI_VERSION }}
 
       # Runs a single command using the runners shell
       - name: Prepare and check CLI version
